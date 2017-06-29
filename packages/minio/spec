@@ -3,4 +3,5 @@ name: minio
 
 dependencies: []
 
-files: []
+files:
+- minio/minio # From https://dl.minio.io/server/minio/release/linux-amd64/minio.RELEASE.2017-06-13T19-01-01Z
