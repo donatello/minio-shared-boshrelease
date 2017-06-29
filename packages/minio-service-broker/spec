@@ -1,0 +1,7 @@
+---
+name: minio-shared-servicebroker
+
+dependencies: []
+
+files:
+- minio-service-broker/minio-service-broker
