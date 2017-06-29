@@ -1,0 +1,25 @@
+---
+name: minio-service-broker
+
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+  - minio-service-broker
+  - minio
+
+consumes:
+- name: minio-shared-boshrelease
+  type: server
+
+provides:
+- name: minio-shared-boshrelease
+  type: server
+
+properties:
+  credential.user:
+    description: "The username for service broker"
+    default: ~
+  credential.password:
+    description: "The password for service broker"
+    default: ~

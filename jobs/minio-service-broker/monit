@@ -1,0 +1,5 @@
+check process minio-service-broker
+  with pidfile /var/vcap/sys/run/minio-service-broker/pid
+  start program "/var/vcap/jobs/minio-service-broker/bin/ctl start"
+  stop program "/var/vcap/jobs/minio-service-broker/bin/ctl stop"
+  group vcap

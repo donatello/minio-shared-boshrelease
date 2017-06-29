@@ -1,5 +1,5 @@
 ---
-name: minio-shared-servicebroker
+name: minio-service-broker
 
 dependencies: []
 

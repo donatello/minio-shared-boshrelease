@@ -1,0 +1,34 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/minio-service-broker
+LOG_DIR=/var/vcap/sys/log/minio-service-broker
+CONFIG_DIR=/var/vcap/jobs/minio-service-broker/config
+STORE_DIR=/var/vcap/store/minio-service-broker
+PIDFILE=${RUN_DIR}/pid
+
+BINPATH=/var/vcap/packages/minio-service-broker
+
+mkdir -p ${RUN_DIR} ${LOG_DIR} ${CONFIG_DIR} ${STORE_DIR}
+chown -R vcap:vcap $RUN_DIR $LOG_DIR $CONFIG_DIR ${STORE_DIR}
+
+case $1 in
+
+  start)
+    echo $$ > $PIDFILE
+
+    exec ${BINPATH}/minio-service-broker
+         >> ${LOG_DIR}/minio-service-broker.stdout.log \
+         2>> ${LOG_DIR}/minio-service-broker.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac
